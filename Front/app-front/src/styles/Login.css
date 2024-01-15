@@ -1,0 +1,167 @@
+.contenedor_logo{
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo{
+  height: 170px;
+  width: 190px;
+}
+
+.contenedor_login{
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+
+.contenedor_formulario_login {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+label {
+  font-weight: bold;
+}
+
+input{
+  width: 250px;
+  height: 25px;
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid rgba(128, 128, 128, 0.422);
+  border-radius: 5px;
+}
+
+.boton_iniciar {
+  margin-top: 100px;
+  background-color: white;
+  min-width: 110px;
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: uppercase;
+  grid-column: span 2; /*dos columnas completas */
+  padding: 65px 15px;
+  border: 6px solid #003d57;
+  border-radius: 100%;
+  cursor: pointer;
+  user-select: none;
+  position: relative;/*posición relativa */
+  z-index: 1;/*encima del gradiente */
+}
+
+.boton_iniciar:hover{
+  background-color: #D56B70;
+  color: white;
+}
+
+/*gradiente detrás del botón */
+.buble {
+  left: -50vw;
+  position: absolute;
+  width: 200%;
+  background: #003d57;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 61, 87, 0.73),
+    rgba(0, 61, 87, 0.74) 16%,
+    rgba(0, 61, 87, 0.85) 52%,
+    rgba(0, 61, 87, 0.9) 72%,
+    #003d57
+  );
+  height: 30vh;
+  transform: rotate(180deg);
+  bottom: 0;
+  top: auto;
+  z-index: 0; /*detrás del botón */
+}
+/*MENSAJES*/
+.contenedor_error{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  bottom: 320px;
+}
+
+.contenedor_exito{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  bottom: 300px; /* ajusta según necesidad */
+}
+
+.mensaje_error {
+  color: white;
+  background-color: #D56B70;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  text-align: center;
+  max-width: 250px;
+}
+
+.mensaje_exito {
+  color: white;
+  background-color: green;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  text-align: center;
+  max-width: 250px;
+}
+
+/*AJUSTE PARA MOVILES O TABLETS APARTIR DE 768px*/
+@media (max-width: 768px) {
+  .contenedor_formulario_login {
+      grid-template-columns: 1.2fr 1.3fr; /* Cambio para que todo sea una columna */
+      padding: 0 20px; /* Añadir algo de padding para que no se pegue a los bordes */
+  }
+  
+  .boton_iniciar {
+      padding: 50px 10px;
+      font-size: 12px;
+  }
+
+  .campo {
+      width: 100%;
+  }
+
+  input {
+      display: flex;
+      width: calc(100% - 8px);
+  }
+
+  .contenedor_error {
+      width: 70%;
+      font-size: 12px;
+  }
+
+  .mensaje_error {
+      width: calc(100% - 20px); /* Ajustar el ancho del mensaje de error */
+  }
+
+  .contenedor_exito{
+      width: 70%;
+      font-size: 12px;
+  }
+
+  .mensaje_exito {
+      width: calc(100% - 20px); /* Ajustar el ancho del mensaje de error */
+  }
+
+}

@@ -1,0 +1,522 @@
+h1{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 40px;
+  font-variant: small-caps;
+}
+
+ol{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+li{
+  margin: 20px;
+}
+
+ol li::marker {
+  color: #003d57;
+  font-weight: bold; /*negrita*/
+  font-size: 1.5em; /*tamaño*/
+}
+
+/*BARRA DE NAV*/
+.navbar {
+  height: 100vh;
+  width: 180px;
+  top: 0;
+  left: 0;
+  color: white;
+  position: fixed;
+  display: block;
+  padding: 30px 0;
+  background: #003d57;
+  background: -webkit-gradient(left top, left bottom, color-stop(0, #003d57), color-stop(100%, #002b3e));
+  background: linear-gradient(180deg, #003d57 0, #002b3e);
+  -ms-overflow-style: none; /* IE and Edge */
+  overflow: -moz-scrollbars-none; /* Firefox */
+  scrollbar-width: none; /* Firefox */
+  overflow-y: hidden;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 700;
+  user-select: none;
+  }
+
+  .logo{
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  }
+
+  .logo img {
+    max-width: 150px;
+    max-height: 150px;
+    height: auto;
+    width: auto; 
+  }
+
+  .usuario{
+  padding: 10px 20px;
+  margin-bottom: 50px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  font-variant: small-caps;
+  }
+
+  .rol{
+    text-align: right;
+    font-size: 14px;
+    font-variant: inherit;
+    font-style: italic;
+    color: #D76C71;
+    display: block;
+  }
+
+  .listado{
+    padding: 20px 20px;
+    text-align: right;
+    margin-bottom: 10px;
+  }
+
+  .almacen{
+  padding: 20px 20px;
+  text-align: right;
+  margin-bottom: 10px;
+  }
+
+  .subir{
+  padding: 20px 20px;
+  text-align: right;
+  margin-bottom: 10px;
+  }
+
+  .salir{
+  color: white;
+  padding: 10px 40px;
+  text-align: right;
+  margin-top: 60px;
+  font-weight: 700;
+  font-size: 20px;
+  font-variant: small-caps;
+  background: none;
+  border: none;
+  cursor: pointer; /*clickeable */
+  transition: transform 0.3s ease;
+  }
+  .salir:hover{
+    transform: scale(1.2);
+  }
+
+  .icono_salir{
+    color: #D76C71;
+  }
+
+  .icono_salir:hover{
+    color: red;
+    transform: scale(1.2);
+  }
+
+  .icono:hover {
+    transform: scale(1.3); /*tamaño del icono en hover*/
+  }
+
+  .activo {
+    background-color: white;
+    color: #003d57;
+  }
+
+/*zoom a elementos navegables que no estan activos */
+.navegable:not(.activo) {
+  transition: transform 0.3s ease;
+}
+
+.navegable:not(.activo):hover {
+  transform: scale(1.15); /*nivel de zoom como prefieras */
+}
+/*TITULO DENTRO NAV*/
+.titulos_contenido{
+  color: #002b3e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+
+/*ALMACEN*/
+.tabla_almacen {
+  display: grid;
+  justify-content: center;
+  align-items: start; /* Mejor alineación para contenido variable */
+  gap: 15px; /* Espacio ligeramente mayor entre filas */
+  user-select: none;
+  padding: 25px; /* Espacio adicional alrededor de la tabla */
+}
+
+.fila_almacen {
+  display: grid;
+  grid-template-columns: 50px 1fr auto auto 140px; /* Columnas ligeramente más anchas */
+  align-items: center;
+  border-bottom: 3px solid #ed0505;
+  padding: 12px 25px; /* Aumentar el padding para más espacio */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 500;
+  font-size: 17px; /* Ligeramente más pequeño para mejor adaptación en móviles */
+  background-color: #f9f9f9;
+  transition: background-color 0.3s, transform 0.3s; /* Transición suave en hover */
+}
+
+.fila_almacen:hover {
+  background-color: #047aad34; /* Color de hover sutil */
+  transform: translateY(-2px); /* Efecto de elevación ligero */
+}
+
+.celda_descargar, .celda_eliminar, .celda_nombre, .celda_tamaño, .celda_modify {
+  padding: 0px 40px; /* Uniformidad en padding */
+  text-align: center;
+}
+
+.icono_descargar, .icono_eliminar {
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.icono_descargar:hover {
+  transform: scale(1.3);
+  color: green;
+}
+
+.icono_eliminar:hover {
+  transform: scale(1.2);
+  color: red;
+}
+
+/*SUBIR CARGAR ARCHIVOS*/
+.contenedor_subir{
+  display:flexbox;
+  align-items: center;
+  justify-content: center;
+}
+.contenido_subir {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 380px); /*altura*/
+}
+
+.contenido_subir form {
+  display: flex;
+  flex-direction: column; /*elementos del formulario en columna*/
+  align-items: center; /*centrar elementos horizontalmente*/
+  width: 380%; /*Ajusta al ancho deseado*/
+}
+
+.contenido_subir input[type="file"] {
+  width: 100%; /*ajusta al ancho del contenedor del formulario */
+  padding: 10px; /*espacio interno para el input */
+  margin-bottom: 15px; /*espacio entre el input y el botón */
+  border: 1px solid #ccc; /*borde del input */
+  border-radius: 4px; /*bordes redondeados */
+}
+
+.contenido_subir button {
+  margin: 10px;
+  margin-top: 0px;
+  padding: 8px 20px; /*espacio interno para el botón */
+  border: none; /*elimina el borde */
+  background-color: #003d57;
+  color: white;
+  border-radius: 4px; /*bordes redondeados*/
+  cursor: pointer;
+  transition: background-color 0.3s; /*transición suave del color de fondo */
+}
+
+.contenido_subir button:hover {
+  background-color: #005f87;
+}
+
+/*BARRA PROGRESO*/
+.barra_progreso {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.progreso {
+  height: 20px;
+  background-color: #76b852;
+  border-radius: 5px;
+  transition: width 0.4s ease-in-out;
+}
+
+/*MENSAJES*/
+.mensajes {
+  text-align: center;
+}
+
+.mensaje {
+  color: white;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  text-align: center;
+  max-width: 250px;
+}
+
+.mensaje_error {
+  background-color: #D76C71;
+}
+
+.mensaje_exito {
+  background-color: green;
+}
+
+.contenedor_chiste{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+}
+.mensaje_chiste{
+  background-color: #003d57;
+  color: white;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  text-align: center;
+  max-width: 250px;
+}
+
+/*DISPOSITIVOS MOVILES*/
+@media (max-width: 1090px) {
+
+  /*BARRA*/
+  .navbar {
+      width: 115px;
+      font-size: 14px;
+  }
+  .salir{
+    color: white;
+    padding: 0px 30px;
+    text-align: center;
+    margin-top: 80px;
+    font-weight: 700;
+    font-size: 20px;
+    font-variant: small-caps;
+    background: none; /*Elimina el fondo */
+    border: none; /* Elimina el borde */
+    cursor: pointer; /* Mantiene el cursor como puntero para indicar que es clickeable */
+    transition: transform 0.3s ease;
+    }
+
+  .logo{
+     padding: 8px;
+    display: flex;
+    align-items: center;
+  }
+    
+  .logo img {
+      max-width: 100px;
+      max-height: 100px;
+      height: auto;
+      width: auto; 
+  }
+    
+  .usuario{
+    padding: 10px 20px;
+    margin-bottom: 50px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+     font-variant: small-caps;
+  }
+
+  .rol{
+    text-align: right;
+    font-size: 8px;
+    font-variant: inherit;
+    font-style: italic;
+    color: #D76C71;
+    display: block;
+  }
+
+  /*Dentro de menus*/
+  .titulos_contenido, h1{
+      font-size: 18px;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .lista_contenidos{
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    width: 100%;
+  }
+
+  /*subir archivos */
+  .contenido_subir form {
+      width: 90%;
+  }
+
+  .contenido_subir input[type="file"] {
+      padding: 5px;
+  }
+
+  .contenido_subir button {
+      padding: 8px 15px;
+  }
+
+  /*almacen*/
+  .fila_almacen {
+    grid-template-columns: 30px 1fr auto auto; /* Ajustar columnas para móviles */
+    padding: 8px 15px; /* Padding más pequeño */
+    font-size: 16px; /* Texto más pequeño para mejor lectura en dispositivos pequeños */
+  }
+
+  .celda_descargar, .celda_eliminar, .celda_nombre, .celda_tamaño, .celda_modify {
+    padding: 0px 10px; /* Padding reducido para móviles */
+  }
+
+  .icono_descargar, .icono_eliminar {
+    font-size: 20px; /* Iconos ligeramente más pequeños */
+  }
+}
+
+/*DISPOSITIVOS MOVILES*/
+@media (max-width: 743px) {
+
+  /*BARRA*/
+  .navbar {
+      width: 90px;
+      font-size: 12px;
+  }
+
+  .salir{
+    color: white;
+    padding: 0px 10px;
+    text-align: center;
+    margin-top: 80px;
+    font-weight: 700;
+    font-size: 20px;
+    font-variant: small-caps;
+    background: none; /*Elimina el fondo */
+    border: none; /* Elimina el borde */
+    cursor: pointer; /* Mantiene el cursor como puntero para indicar que es clickeable */
+    transition: transform 0.3s ease;
+    font-size: 0px;
+    text-decoration: none;
+    }
+
+    .icono_salir{
+      padding: 0px 10px;
+      text-align: center;
+      font-size: 40px;
+    }
+
+  .logo{
+     padding: 5px;
+    display: flex;
+    align-items: center;
+  }
+    
+  .logo img {
+      max-width: 80px;
+      max-height: 80px;
+      height: auto;
+      width: auto; 
+  }
+    
+  .usuario{
+    padding: 10px 20px;
+    margin-bottom: 50px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+     font-variant: small-caps;
+  }
+
+  .rol{
+    text-align: right;
+    font-size: 8px;
+    font-variant: inherit;
+    font-style: italic;
+    color: #D76C71;
+    display: block;
+  }
+
+  .listado{
+    padding: 20px 20px;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .almacen{
+    padding: 20px 20px;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .subir{
+    padding: 20px 20px;
+    text-align: left;
+    margin-bottom: 10px;
+    }
+
+  /*Dentro de menus*/
+  .titulos_contenido, h1{
+      font-size: 18px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .lista_contenidos{
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    width: 100%;
+  }
+
+  /*subir archivos */
+  .contenido_subir{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    font-size: 5px;
+    margin: 195px 80px 0px;
+    padding: 0px 0px 0px 92px;
+  }
+
+  .contenido_subir button {
+    margin: 10px 60px 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px;
+  }
+
+  /*almacen*/
+
+  .fila_almacen {
+    grid-template-columns: 30px 80px 60px 35px 10px;
+    margin: 0px 100px 0px 150px;
+    padding: 0px 200px 0px 190px;
+    font-size: 11px; 
+  }
+
+  .celda_descargar, .celda_eliminar, .celda_nombre, .celda_tamaño, .celda_modify {
+    padding: 0px 10px; /* Padding reducido para móviles */
+  }
+
+  .icono_descargar, .icono_eliminar {
+    font-size: 20px; /* Iconos ligeramente más pequeños */
+  }
+}

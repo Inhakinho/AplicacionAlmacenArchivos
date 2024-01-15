@@ -1,0 +1,14 @@
+###
+GET http://localhost:3000/archivos 
+
+###
+GET   http://localhost:3000/descargar/1
+
+###
+PUT  http://localhost:3000
+
+###
+PATCH  http://localhost:3000
+
+#####
+DELETE  http://localhost:3000/archivos/4fb1b2bd-1960-4ad5-a4f7-092ad33ebbb2

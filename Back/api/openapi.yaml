@@ -1,0 +1,241 @@
+openapi: 3.0.3
+info:
+  title: CloudminE API Almacenamiento
+  description: |-
+    Esta es una simple API que crea un servidor utilizando Node.js con Express.js. Cuenta con un Login o sistema de inicio de sesión y entre sus usos destaca por la gestión de archivos:
+    
+    Permite almacenar, subiendo archivos, listarlos, borrar o descargar estos y todo esto se registra en una BBDD en SQlite 3.0. Y los archivos son almacenados en una carpeta local. 
+    
+    La BBDD simplemente consta de dos tablas:
+    
+    - usuarios: compuesta por los campos: uuid, nombre_usuario, email, contraseña,salt y rol.
+    - archivos: compuesta por los campos: uuid, nombre, tipo, tamaño, createdby, updatedby y fecha.
+  version: 1.0.0
+  
+servers:
+  - url: http://localhost:3001
+    description: Servidor local
+tags:
+  - name: login
+    description: Endpoint que permite hacer inicio de sesion.
+    
+  - name: archivos
+    description: Endpoint que lista toda informacion sobre los archivos almacenados en la BBDD.
+    
+  - name: subir archivos
+    description: Endpoint que permite subir archivos al servidor guardalos en una carpeta local y registrar en la BBDD.
+    
+  - name: eliminar archivos
+    description: Endpoint que permite eliminar archivos del servidor y la BBDD.
+    
+  - name: descargar archivos
+    description: Endpoint que permite descargar archivos del servidor.
+    
+paths:
+  /archivos:
+    get:
+      tags:
+      - archivos
+      summary: Obtiene una lista de todos los archivos.
+      responses:
+        '200':
+          description: Una lista de archivos si los hay.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - type: object
+                  properties:
+                    message:
+                      type: string
+                      example: La carpeta de archivos está vacía
+                    archivos:
+                      type: array
+                      items: {}
+                      example: []
+                - type: array
+                  items: 
+                    $ref: '#/components/schemas/archivos'
+        '500':
+          description: Error al revisar BBDD
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Error al revisar archivos de la base de datos.
+  /login:
+    post:
+      tags:
+      - login
+      summary: Permite iniciar sesión en el login.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                usuario:
+                  type: string
+                  description: Nombre del usuario registrado BBDD
+                  example: "Iñaki"
+                contraseña:
+                  type: string
+                  description: Contraseña del usuario registrada en la BBDD
+                  example: "1234"
+      responses:
+        '200':
+          description: Inicio exitoso, devuelve token para poder verificar la creación.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  autenticado:
+                    type: boolean
+                    example: true
+                  token:
+                    type: string
+                    example: "asdfhfgasdlkjfhdlkY6287ehjdabsd"
+                  rol:
+                    type: string
+                    example: "admin"
+        '401':
+          description: Inicio de sesion fallido, usuario o contraseña incorrectos.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  autenticado:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: "Usuario o Contraseña incorrecta"
+  /subir-archivo:
+    post:
+      tags:
+      - subir archivos
+      security:
+      - bearerAuth: []
+      summary: Permite subir archivos al servidor y registrar en la BBDD.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                subir:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+      responses:
+        '200':
+          description: Archivos subidos con éxito y chiste traducido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mensaje:
+                    type: string
+                    example: "Archivos subidos con éxito"
+                  chiste:
+                    type: string
+                    example: "Chiste traducido al español" 
+  /archivos/{uuid}:
+    delete:
+      tags:
+      - eliminar archivos
+      summary: Permite eliminar archivos del servidor y de la BBDD.
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          description: uuid del archivo a eliminar
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Archivo eliminado con éxito.
+  /descargar/{uuid}:
+    get:
+      tags:
+      - descargar archivos
+      summary: Permite descargar archivos del servidor.
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          description: uuid del archivo a descargar
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Archivo descargado con éxito.
+      
+components:
+  schemas:
+    archivos:
+      type: object
+      description: Listado de Archivos almacenados
+      properties:
+        uuid:
+          type: string
+          description: Numero de id unico
+        nombre:
+          type: string
+          description: Nombre con extension del archivo
+        tipo:
+          type: string
+          description: Tipo de archivo imagen/textoplano...
+        tamaño:
+          type: integer
+          description: Peso del archivo en bytes
+        createdby:
+          type: string
+          description: nombre del usuario que subio el archivo
+        updatedby:
+          type: string
+          description: nombre del usuario que modificó el archivo
+        createdfecha:
+          type: string
+          description: fecha de cuando el archivo fue subido por primera vez
+        updatedfecha:
+          type: string
+          description: fecha de cuando el archivo fue actualizado
+          
+    usuarios:
+      type: object
+      description: Listado de Usuarios almacenados
+      properties:
+        uuid:
+          type: string
+          description: Numero de id unico
+        nombre_usuario:
+          type: string
+          description: Nombre del usuario
+        contraseña:
+          type: string
+          description: Contraseña protegita por hash
+        email:
+          type: string
+          description: Correo electronico asociado al usuario
+        salt:
+          type: string
+          description: Codigo salt para la contraseña
+        rol:
+          type: string
+          description: Nivel del usuario Admin o User
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
