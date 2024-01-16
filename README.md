@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>App CloudminE<h1>
+    <h1>App CloudminE</h1>
     <h2>Back Api servidor + Front React appweb </h2>
     <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000&style=flat-square">
     <img src="https://img.shields.io/badge/Node.js-393?logo=nodedotjs&logoColor=fff&style=flat-square">
@@ -21,12 +21,16 @@
 </div>
 
 
+#####Note:
+This readme file is in spanish. If you don't know our language, consider using a translation tool or learning it.
+
 <div align=center>
 
 ### Autor
 
 [<img align=center src="https://avatars.githubusercontent.com/u/73167727?v=4" width=95><br><sub align=center>Iñaki Baulde Acha</sub>](https://github.com/inhakinho)
 </div>
+
 
 
 
