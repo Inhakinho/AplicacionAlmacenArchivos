@@ -21,7 +21,7 @@
 </div>
 
 
-#####Note:
+Note:
 This readme file is in spanish. If you don't know our language, consider using a translation tool or learning it.
 
 <div align=center>
