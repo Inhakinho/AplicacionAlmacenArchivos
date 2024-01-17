@@ -1,6 +1,5 @@
 <div align="center">
     <h1>App CloudminE</h1>
-    <img src="./src/images/cloudmine.png" alt="Logo de CloudminE">
     <h2>Back Api servidor + Front React appweb</h2>
     <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000&style=flat-square">
     <img src="https://img.shields.io/badge/Node.js-393?logo=nodedotjs&logoColor=fff&style=flat-square">
@@ -21,37 +20,38 @@
 </div>
 
 ## Resumen
-Esta es una simple API que crea un servidor utilizando Node.js con Express.js...
-
+Esta es una simple API que crea un servidor utilizando Node.js con Express.js. Cuenta con un Login o sistema de inicio de sesión y entre sus usos destaca por la gestión de archivos: 
+Permite almacenar, subiendo archivos, listarlos, borrar o descargar estos y todo esto se registra en una BBDD en SQlite 3.0. Y los archivos son almacenados en una carpeta local.
 ## Instrucciones de Uso
 
 ### Configuración del Entorno
 1. Asegúrate de tener [Node.js](https://nodejs.org/) y npm instalados.
 2. Clona el repositorio:
-git clone https://github.com/Inhakinho/AplicacionAlmacenArchivos.git
+`git clone https://github.com/Inhakinho/AplicacionAlmacenArchivos.git`
 3. Instala las dependencias:
-cd ruta carpeta donde lo has clonado
-npm install
+`cd ruta carpeta donde lo has clonado`
+`npm install`
 
 ### Ejecución del Servidor
 Para ejecutar el servidor, usa el siguiente comando:
-npm start
+`npm start`
 o
-nodemon app.js
+`nodemon app.js`
 
 El servidor se iniciará en [http://localhost:3001](http://localhost:3001).
 
 ### Ejecución del Frontend
+La app se iniciará en [http://localhost:3000](http://localhost:3000).
 Para iniciar la aplicación React, navega al directorio del frontend y ejecuta:
-npm start
+`npm start`
 
 La aplicación se abrirá automáticamente en tu navegador.
 
 ## Usuarios Predefinidos
 La aplicación viene con tres usuarios predefinidos que puedes usar para probar:
-- Usuario: admin | Contraseña: 12345 | Rol: admin
-- Usuario: David | Contraseña: admin | Rol: admin
-- Usuario: Iñaki | Contraseña: 7777777 | Rol: user
+- Usuario 1: admin | Contraseña: 12345 | Rol: admin
+- Usuario 2: David | Contraseña: admin | Rol: admin
+- Usuario 3: Iñaki | Contraseña: 7777777 | Rol: user
 
 ## Carga de Archivos
 Para subir archivos, sigue estos pasos:
@@ -60,11 +60,9 @@ Para subir archivos, sigue estos pasos:
 3. Selecciona los archivos que desees subir.
 4. Confirma la carga y espera la respuesta del servidor.
 
-## Contribuciones
-Si deseas contribuir a este proyecto, por favor sigue las [guías de contribución](enlace-a-tu-guia).
+## Contribuciones o Donaciones
+Si deseas contribuir a este proyecto, por favor sigue las [guías de contribución](https://streamelements.com/inhakinho/tip).
 
 ## Autor
-[![Iñaki Baulde Acha](https://avatars.githubusercontent.com/u/73167727?v=4)](https://github.com/inhakinho)
-<br>
 [Iñaki Baulde Acha](https://github.com/inhakinho)
 
