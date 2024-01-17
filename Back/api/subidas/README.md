@@ -1,1 +1,0 @@
-carpeta almacenaje de archivos
